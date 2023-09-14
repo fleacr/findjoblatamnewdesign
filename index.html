@@ -12,43 +12,46 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
+<header class="bg-white hover:bg-slate-100">
+  <nav class="p-4  shadow md:flex md:items-center md:justify-start pb-5">
+    <div class="flex justify-between items-center">
+      <span class="text-2xl font-[Poppins] cursor-pointer pr-10">
+        <img class="h-10 inline" src="images/Logo-FindJobLatam.png">
+        Find Job Latam
+      </span>
+  
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block sticky">
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
+  
+    <ul
+      class="md:flex md:items-center z-10 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Home</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Latam</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Costa Rica</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Free resources</a>
+      </li>
+  
+      <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+        Contact Us
+      </button>
+      <h2 class=""></h2>
+    </ul>
+  </nav>
+</header>
+
 <body>
 
-    <nav class="p-4 bg-white shadow md:flex md:items-center md:justify-start">
-      <div class="flex justify-between items-center ">
-        <span class="text-2xl font-[Poppins] cursor-pointer pr-10">
-          <img class="h-10 inline" src="images/Logo-FindJobLatam.png">
-          Find Job Latam
-        </span>
-    
-        <span class="text-3xl cursor-pointer mx-2 md:hidden block">
-          <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
-        </span>
-      </div>
-    
-      <ul
-        class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#" class="text-xl hover:text-cyan-500 duration-500">Home</a>
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#" class="text-xl hover:text-cyan-500 duration-500">Costa Rica</a>
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#" class="text-xl hover:text-cyan-500 duration-500">Latam</a>
-        </li>
-        <li class="mx-4 my-6 md:my-0">
-          <a href="#" class="text-xl hover:text-cyan-500 duration-500">Free resources</a>
-        </li>
-    
-        <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
-          Contact Us
-        </button>
-        <h2 class=""></h2>
-      </ul>
-    </nav>
-    <section id="home" class="flex flex-row justify-center gap-20 mt-50 mb-35 bg-gray-300 p-60">
-        <div class="text-center">
+    <section id="home" class="flex flex-row justify-center gap-20 mb-35 font-semibold text-cyan-600 mt-40">
+        <div class="text-center ml-5">
           <img src="images/illustrations/search-candidates.svg" alt="candidates" width="400" height="400">
           <span>We find the right candidate</span>
         </div>
@@ -56,10 +59,14 @@
           <img src="images/illustrations/suitcase-work.svg" alt="suitcasewomen" width="400" height="400">
           <span>We help you to find job</span>
         </div>
-        <div class="text-center">
+        <div class="text-center mr-5">
           <img src="images/illustrations/women-and-graphic.svg" alt="graphicandwomen" width="400" height="400">
           <span>We share free resources</span>
         </div>
+    </section>
+
+    <section id="latam">
+      <h2 class="text-center pt-28 pb-10 text-2xl font-bold">Latam</h2>
     </section>
     
       <script src="javascript/LOGIC.JS"></script>
