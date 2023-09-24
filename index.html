@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
-<header class="bg-white hover:bg-slate-100">
+<header class="bg-white hover:bg-slate-100 fixed top-0 w-full z-40">
   <nav class="p-4  shadow md:flex md:items-center md:justify-start pb-5">
     <div class="flex justify-between items-center">
       <span class="text-2xl font-[Poppins] cursor-pointer pr-10">
@@ -31,7 +31,7 @@
           <a href="#" class="text-xl hover:text-cyan-500 duration-500">Home</a>
         </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Latam</a>
+        <a href="#latam" class="text-xl hover:text-cyan-500 duration-500">Latam</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="text-xl hover:text-cyan-500 duration-500">Costa Rica</a>
@@ -51,17 +51,17 @@
 <body>
 
     <section id="home" class="flex flex-row justify-center gap-20 mb-35 font-semibold text-black mt-40 bg-cover">
-        <div class="text-center ml-5 hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer">
+        <div class="text-center ml-5 hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer max-sm:ml-0">
           <img src="images/illustrations/search-candidates.svg" alt="candidates" width="400" height="400" class="mb-5">
           <span>We find the right candidate for your company</span>
         </div>
 
-        <div class="text-center hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer">
+        <div class="text-center hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer  max-sm:m-0">
           <img src="images/illustrations/suitcase-work.svg" alt="suitcasewomen" width="400" height="400" class="mb-5">
           <span>We help you to find job</span>
         </div>
 
-        <div class="text-center mr-5 hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer">
+        <div class="text-center mr-5 hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer  max-sm:mr-0">
           <img src="images/illustrations/women-and-graphic.svg" alt="graphicandwomen" width="400" height="400" class="mb-5">
           <span>We bring you tools to excel your professional growth</span>
         </div>
@@ -666,7 +666,26 @@
     </div> 
 
     <hr class="mt-10">
+           
+    <div id="Grupo-VLA">
+    
+      <div class="flex justify-center lg:m-5 transition ease-in-out delay-150 hover:-translate-y-3 duration-700">
+        <a href="https://serviciosvla.com/" target="_blank" class="max-sm:w-3/6 sm:w-2/5 md:w-1/4 lg:w-1/6 max-sm:pb-5"><img src="images/companies/grupo-Vla-latam.jpg"></a>
+      </div>
+    
+      <div class="lg:grid lg:grid-cols-1 place-content-center lg:ml-60 lg:mr-60 md:mr-3 md:ml-3 sm:mr-1 sm:ml-1">
+        <div>
+          <a href="https://serviciosvla.com/" target="_blank"><span class="font-bold text-cyan-700 text-xl">Grupo VLA</span></a>
+        </div>
+    
+        <div>
+          <span class="font-medium text-lg text-zinc-600">Las empresas buscan personas con habilidades informáticas, gerenciales, de idiomas y mercadeo digital. Aprende con las clases 100% en vivo por Internet de VLA. Tu rumbo a un mejor empleo empieza aquí.</span>
+        </div>
+      </div>
+      
+    </div> 
 
+    <hr class="mt-10">
     </section>
     
       <script src="javascript/LOGIC.JS"></script>
