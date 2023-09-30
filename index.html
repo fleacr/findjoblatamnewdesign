@@ -12,8 +12,8 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
-<header class="bg-white hover:bg-slate-100 fixed top-0 w-full z-40">
-  <nav class="p-2 shadow md:flex md:items-center md:justify-start  pb-3">
+<header id="header" class="bg-white hover:bg-slate-100 fixed top-0 w-full z-40">
+  <nav class="p-2 shadow md:flex md:items-center md:justify-start pb-3">
     <a href="#"><div class="flex justify-between items-center">
       <span class="text-2xl font-[Poppins] cursor-pointer pr-10">
         <img class="h-10 inline" src="images/Logo-FindJobLatam.png">
@@ -26,7 +26,7 @@
     </div>
   
     <ul
-      class="md:flex md:items-center z-10 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 max-sm:bg-white sm:bg-white lg:bg-transparent md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+      class="md:flex md:items-center z-10 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 max-sm:bg-white md:bg-transparent lg:bg-transparent md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
       <li class="mx-4 my-6 md:my-0">
           <a href="#" class="text-xl hover:text-cyan-500 duration-500">Home</a>
       </li>
@@ -47,6 +47,14 @@
 
 <body>
 
+  <div class="opacity-50 hover:opacity-100">
+    <div>
+      <a href="#home" class="btn-flotante text-xl lg:p-3 md:p-3 sm:p-3 lg:mb-8 md:mb-8 sm:mb-7 max-sm:mb-6 bg-cyan-600 mr-9 max-sm:p-2 max-sm:mr-6">︿</a>
+    </div>
+    <div >
+      <span class="btn-flotante-index max-sm:text-xs">Scroll to top</span>
+    </div>
+  </div>
     <section id="home" class="flex flex-row justify-center lg:gap-28 mb-35 font-semibold text-black mt-40 bg-cover sm:gap-8 max-sm:gap-8">
 
         <a href="#Staff-Augmentation"><div class="text-center ml-5 hover:animate-pulse hover:bg-slate-200 rounded-lg hover:cursor-pointer max-sm:ml-0">
