@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 html{
   background-color: rgb(241 245 249);  
 }
@@ -45,8 +47,6 @@ html{
 }
 
  /* Carrousel Resources*/
-
- @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 :root {
     --accent: #9fe870;
@@ -193,7 +193,7 @@ html{
 .bank-account {
     appearance: none;
     text-decoration: none;
-    position: relative;
+    position: static; /*relative by default*/
     background: var(--secondary);
     padding: 16px;
     border-radius: 16px;
