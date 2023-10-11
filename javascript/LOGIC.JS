@@ -5,7 +5,6 @@ function Menu(e){
 
   const bankAccounts = document.getElementById('bank-accounts');
 
-
 let isDown = false;
 let startX;
 let startY;
@@ -76,5 +75,81 @@ bankAccounts.addEventListener('scroll', (e) => {
     scrollRightButton.disabled = true;
   } else {
     scrollRightButton.disabled = false;
+  }
+});
+
+/* Artificial Intelligence Carrousel */
+
+const scrollLeftButtonAI = document.getElementById('action-button--previousAI');
+const scrollRightButtonAI = document.getElementById('action-button--nextAI');
+const artificialIntelligence = document.getElementById('artificial-intelligence');
+
+let isDownAI = false;
+let startXAI;
+let startYAI;
+let scrollLeftAI;
+let scrollTopAI;
+
+artificialIntelligence.addEventListener('mousedown', (e) => {
+  isDownAI = true;
+  startXAI = e.pageX - artificialIntelligence.offsetLeft;
+  startYAI = e.pageY - artificialIntelligence.offsetTop;
+  scrollLeftAI = artificialIntelligence.scrollLeft;
+  scrollTopAI = artificialIntelligence.scrollTop;
+  artificialIntelligence.style.cursor = 'grabbing';
+});
+
+artificialIntelligence.addEventListener('mouseleave', () => {
+  isDownAI = false;
+  artificialIntelligence.style.cursor = 'grab';
+});
+
+artificialIntelligence.addEventListener('mouseup', () => {
+  isDownAI = false;
+  artificialIntelligence.style.cursor = 'grab';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDownAI) return;
+  e.preventDefault();
+  const x = e.pageX - artificialIntelligence.offsetLeft;
+  const y = e.pageY - artificialIntelligence.offsetTop;
+  const walkXAI = (x - startX) * 1; 
+  const walkYAI = (y - startY) * 1; 
+  artificialIntelligence.scrollLeft = scrollLeft - walkXAI;
+  artificialIntelligence.scrollTop = scrollTop - walkYAI;
+});
+
+scrollLeftButtonAI.addEventListener('click', () => {
+  artificialIntelligence.scrollBy({
+        top: 0, 
+        left: -200, 
+        behavior: 'smooth'
+    });
+});
+
+scrollRightButtonAI.addEventListener('click', () => {
+  artificialIntelligence.scrollBy({
+        top: 0, 
+        left: 200, 
+        behavior: 'smooth'
+    });
+});
+
+artificialIntelligence.addEventListener('scroll', (e) => {
+  const position = artificialIntelligence.scrollLeft;
+  if (position === 0) {
+    scrollLeftButtonAI.disabled = true;
+  } else {
+    scrollLeftButtonAI.disabled = false;
+  }
+
+  if (
+    Math.round(position) === 
+    artificialIntelligence.scrollWidth - artificialIntelligence.clientWidth
+  ) {
+    scrollRightButtonAI.disabled = true;
+  } else {
+    scrollRightButtonAI.disabled = false;
   }
 });

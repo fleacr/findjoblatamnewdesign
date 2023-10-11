@@ -49,7 +49,7 @@ html{
  /* Carrousel Resources*/
 
 :root {
-    --accent: #9fe870;
+    --accent: #d3dfcb;
     --accent-hover: #80e142;
     --accent-active: #65cf21;
     --control: #163300;  
@@ -235,4 +235,24 @@ html{
     width: 100%;
     min-width: 300px;
     margin: 120px auto;
+}
+
+/* Carrousel Artificial Intelligence */
+
+#artificial-intelligence {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0px;
+    width: 100%;
+    flex-direction: row;
+    overflow: auto;
+}
+
+#action-button--previousAI {
+    margin-left: auto;
+    transform: rotate(-90deg);
+}
+
+#action-button--nextAI {
+    transform: rotate(90deg);
 }
