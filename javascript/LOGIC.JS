@@ -3,7 +3,7 @@ function Menu(e){
     e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
   }
 
-  const bankAccounts = document.getElementById('bank-accounts');
+const bankAccounts = document.getElementById('bank-accounts');
 
 let isDown = false;
 let startX;
@@ -151,5 +151,81 @@ artificialIntelligence.addEventListener('scroll', (e) => {
     scrollRightButtonAI.disabled = true;
   } else {
     scrollRightButtonAI.disabled = false;
+  }
+});
+
+/* Job Portals Carrousel */
+
+const scrollLeftButtonJP = document.getElementById('action-button--previousJP');
+const scrollRightButtonJP = document.getElementById('action-button--nextJP');
+const jobPortals = document.getElementById('job-portals');
+
+let isDownJP = false;
+let startXJP;
+let startYJP;
+let scrollLeftJP;
+let scrollTopJP;
+
+jobPortals.addEventListener('mousedown', (e) => {
+  isDownJP = true;
+  startXJP = e.pageX - jobPortals.offsetLeft;
+  startYJP = e.pageY - jobPortals.offsetTop;
+  scrollLeftJP = jobPortals.scrollLeft;
+  scrollTopJP = jobPortals.scrollTop;
+  jobPortals.style.cursor = 'grabbing';
+});
+
+jobPortals.addEventListener('mouseleave', () => {
+  isDownJP = false;
+  jobPortals.style.cursor = 'grab';
+});
+
+jobPortals.addEventListener('mouseup', () => {
+  isDownJP = false;
+  jobPortals.style.cursor = 'grab';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDownJP) return;
+  e.preventDefault();
+  const x = e.pageX - jobPortals.offsetLeft;
+  const y = e.pageY - jobPortals.offsetTop;
+  const walkXJP = (x - startX) * 1; 
+  const walkYJP = (y - startY) * 1; 
+  jobPortals.scrollLeft = scrollLeft - walkXJP;
+  jobPortals.scrollTop = scrollTop - walkYJP;
+});
+
+scrollLeftButtonJP.addEventListener('click', () => {
+  jobPortals.scrollBy({
+        top: 0, 
+        left: -200, 
+        behavior: 'smooth'
+    });
+});
+
+scrollRightButtonJP.addEventListener('click', () => {
+  jobPortals.scrollBy({
+        top: 0, 
+        left: 200, 
+        behavior: 'smooth'
+    });
+});
+
+jobPortals.addEventListener('scroll', (e) => {
+  const position = jobPortals.scrollLeft;
+  if (position === 0) {
+    scrollLeftButtonJP.disabled = true;
+  } else {
+    scrollLeftButtonJP.disabled = false;
+  }
+
+  if (
+    Math.round(position) === 
+    jobPortals.scrollWidth - jobPortals.clientWidth
+  ) {
+    scrollRightButtonJP.disabled = true;
+  } else {
+    scrollRightButtonJP.disabled = false;
   }
 });
