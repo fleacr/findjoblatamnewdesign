@@ -301,3 +301,23 @@ html{
 #action-button--nextJP {
     transform: rotate(90deg);
 }
+
+/* Carrousel English */
+
+#english {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0px;
+    width: 100%;
+    flex-direction: row;
+    overflow: auto;
+}
+
+#action-button--previousENG {
+    margin-left: auto;
+    transform: rotate(-90deg);
+}
+
+#action-button--nextENG {
+    transform: rotate(90deg);
+}
