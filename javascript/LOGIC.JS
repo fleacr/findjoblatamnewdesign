@@ -229,3 +229,79 @@ jobPortals.addEventListener('scroll', (e) => {
     scrollRightButtonJP.disabled = false;
   }
 });
+
+/* English Carrousel */
+
+const scrollLeftButtonENG = document.getElementById('action-button--previousENG');
+const scrollRightButtonENG = document.getElementById('action-button--nextENG');
+const english = document.getElementById('english');
+
+let isDownENG = false;
+let startXENG;
+let startYENG;
+let scrollLeftENG;
+let scrollTopENG;
+
+english.addEventListener('mousedown', (e) => {
+  isDownENG = true;
+  startXENG = e.pageX - english.offsetLeft;
+  startYENG = e.pageY - english.offsetTop;
+  scrollLeftENG = english.scrollLeft;
+  scrollTopENG = english.scrollTop;
+  english.style.cursor = 'grabbing';
+});
+
+english.addEventListener('mouseleave', () => {
+  isDownENG = false;
+  english.style.cursor = 'grab';
+});
+
+english.addEventListener('mouseup', () => {
+  isDownENG = false;
+  english.style.cursor = 'grab';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDownJP) return;
+  e.preventDefault();
+  const x = e.pageX - english.offsetLeft;
+  const y = e.pageY - english.offsetTop;
+  const walkXENG = (x - startX) * 1; 
+  const walkYENG = (y - startY) * 1; 
+  english.scrollLeft = scrollLeft - walkXENG;
+  english.scrollTop = scrollTop - walkYENG;
+});
+
+scrollLeftButtonENG.addEventListener('click', () => {
+  english.scrollBy({
+        top: 0, 
+        left: -200, 
+        behavior: 'smooth'
+    });
+});
+
+scrollRightButtonENG.addEventListener('click', () => {
+  english.scrollBy({
+        top: 0, 
+        left: 200, 
+        behavior: 'smooth'
+    });
+});
+
+english.addEventListener('scroll', (e) => {
+  const position = english.scrollLeft;
+  if (position === 0) {
+    scrollLeftButtonENG.disabled = true;
+  } else {
+    scrollLeftButtonENG.disabled = false;
+  }
+
+  if (
+    Math.round(position) === 
+    english.scrollWidth - english.clientWidth
+  ) {
+    scrollRightButtonENG.disabled = true;
+  } else {
+    scrollRightButtonENG.disabled = false;
+  }
+});
