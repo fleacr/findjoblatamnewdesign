@@ -262,7 +262,7 @@ english.addEventListener('mouseup', () => {
 });
 
 document.addEventListener('mousemove', (e) => {
-  if (!isDownJP) return;
+  if (!isDownENG) return;
   e.preventDefault();
   const x = e.pageX - english.offsetLeft;
   const y = e.pageY - english.offsetTop;
@@ -303,5 +303,81 @@ english.addEventListener('scroll', (e) => {
     scrollRightButtonENG.disabled = true;
   } else {
     scrollRightButtonENG.disabled = false;
+  }
+});
+
+/* Graphic Design Carrousel */
+
+const scrollLeftButtonGRA = document.getElementById('action-button--previousGRA');
+const scrollRightButtonGRA = document.getElementById('action-button--nextGRA');
+const graphicDesign = document.getElementById('graphic-design');
+
+let isDownGRA = false;
+let startXGRA;
+let startYGRA;
+let scrollLeftGRA;
+let scrollTopGRA;
+
+graphicDesign.addEventListener('mousedown', (e) => {
+  isDownGRA = true;
+  startXGRA = e.pageX - graphicDesign.offsetLeft;
+  startYGRA = e.pageY - graphicDesign.offsetTop;
+  scrollLeftGRA = graphicDesign.scrollLeft;
+  scrollTopGRA = graphicDesign.scrollTop;
+  graphicDesign.style.cursor = 'grabbing';
+});
+
+graphicDesign.addEventListener('mouseleave', () => {
+  isDownGRA = false;
+  graphicDesign.style.cursor = 'grab';
+});
+
+graphicDesign.addEventListener('mouseup', () => {
+  isDownGRA = false;
+  graphicDesign.style.cursor = 'grab';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDownGRA) return;
+  e.preventDefault();
+  const x = e.pageX - graphicDesign.offsetLeft;
+  const y = e.pageY - graphicDesign.offsetTop;
+  const walkXGRA = (x - startX) * 1; 
+  const walkYGRA = (y - startY) * 1; 
+  graphicDesign.scrollLeft = scrollLeft - walkXGRA;
+  graphicDesign.scrollTop = scrollTop - walkYGRA;
+});
+
+scrollLeftButtonGRA.addEventListener('click', () => {
+  graphicDesign.scrollBy({
+        top: 0, 
+        left: -200, 
+        behavior: 'smooth'
+    });
+});
+
+scrollRightButtonGRA.addEventListener('click', () => {
+  graphicDesign.scrollBy({
+        top: 0, 
+        left: 200, 
+        behavior: 'smooth'
+    });
+});
+
+graphicDesign.addEventListener('scroll', (e) => {
+  const position = graphicDesign.scrollLeft;
+  if (position === 0) {
+    scrollLeftButtonGRA.disabled = true;
+  } else {
+    scrollLeftButtonGRA.disabled = false;
+  }
+
+  if (
+    Math.round(position) === 
+    graphicDesign.scrollWidth - graphicDesign.clientWidth
+  ) {
+    scrollRightButtonGRA.disabled = true;
+  } else {
+    scrollRightButtonGRA.disabled = false;
   }
 });

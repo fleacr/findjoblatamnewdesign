@@ -321,3 +321,23 @@ html{
 #action-button--nextENG {
     transform: rotate(90deg);
 }
+
+/* Carrousel Graphic Design */
+
+#graphic-design {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0px;
+    width: 100%;
+    flex-direction: row;
+    overflow: auto;
+}
+
+#action-button--previousGRA {
+    margin-left: auto;
+    transform: rotate(-90deg);
+}
+
+#action-button--nextGRA {
+    transform: rotate(90deg);
+}
