@@ -8,7 +8,7 @@ A hub of resources(Artificial Intelligence, Graphic Design, Job Portals, Learnin
 Tailwind CSS and Javascript.
 
 ### Backend:
-NodeJs.
+NodeJs. v 20.9.0
 
 ### Database:
 HeidySQL.(MySql)
