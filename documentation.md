@@ -5,7 +5,8 @@ Documentación del Proyecto Web con Domain-Driven Design
 Este documento tiene como objetivo proporcionar una visión general del proyecto web desarrollado utilizando la metodología Domain-Driven Design.
 ### 1.2 Alcance del Proyecto
 
-El proyecto aborda [descripción breve del alcance del proyecto].
+El objetivo principal de este proyecto es proporcionar una plataforma integral destinada principalmente a residentes de Latinoamérica. La plataforma tiene como propósito facilitar el desarrollo profesional y la búsqueda de oportunidades laborales, abarcando desde aquellos que buscan adquirir nuevas habilidades a bajo costo hasta aquellos en búsqueda de su primera oportunidad laboral o un cambio profesional.
+
 ## 2. Contexto de Negocio
 ### 2.1 Descripción del Negocio
 
