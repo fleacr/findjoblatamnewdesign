@@ -381,3 +381,6 @@ graphicDesign.addEventListener('scroll', (e) => {
     scrollRightButtonGRA.disabled = false;
   }
 });
+
+
+/* Registration Google Button*/
