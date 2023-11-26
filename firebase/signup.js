@@ -1,6 +1,6 @@
 import { ManageAccount } from './config.js';
 
-document.getElementById("formulario-crear").addEventListener("submit", (event) => {
+document.getElementById("create-account").addEventListener("submit", (event) => {
   event.preventDefault();
 
   const email = document.getElementById("email").value;

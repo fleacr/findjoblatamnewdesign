@@ -58,7 +58,8 @@
 <body>
 
   <section id="registration">
-    <div class="lg:grid lg:grid-cols-1 gap-4 place-items-center">
+    <form id="create-account" action="">
+      <div class="lg:grid lg:grid-cols-1 gap-4 place-items-center">
         <div class="lg:grid lg:grid-cols-2 lg:h-96 lg:w-8/12 lg:m-44 drop-shadow-xl lg:rounded-lg lg:gap-10">
 
           <div class="bg-cyan-500 lg:rounded-lg lg:grid lg:grid-cols-1 place-items-center pb-10">
@@ -66,15 +67,15 @@
             <div class="group w-72 md:w-80 lg:w-96">
               <label for="10" class="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400"></label>
               <div class="relative flex items-center">
-                <input type="email" id="" placeholder="Email" class="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:drop-shadow-lg" />
+                <input type="email" id="email" placeholder="Email" class="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:drop-shadow-lg" />
               </div>
             </div>
 
             <div class="group w-72 md:w-80 lg:w-96">
               <label for="10" class="inline-block w-full text-sm font-medium text-gray-500 transition-all duration-200 ease-in-out group-focus-within:text-blue-400"></label>
               <div class="relative flex items-center">
-                <input type="password" id="" placeholder="Password" class="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:drop-shadow-lg" />
-                <button value="signUp" class="absolute right-2 h-7 w-16 rounded-md bg-blue-200 text-xs font-semibold text-white transition-all duration-200 ease-in-out group-focus-within:bg-blue-400 group-focus-within:hover:bg-blue-600">Register</button>
+                <input type="password" id="password" placeholder="Password" class="peer relative h-10 w-full rounded-md bg-gray-50 pl-4 pr-20 font-thin outline-none drop-shadow-sm transition-all duration-200 ease-in-out focus:bg-white focus:drop-shadow-lg" />
+                <button value="signUp" type="submit" class="absolute right-2 h-7 w-16 rounded-md bg-blue-200 text-xs font-semibold text-white transition-all duration-200 ease-in-out group-focus-within:bg-blue-400 group-focus-within:hover:bg-blue-600">Register</button>
               </div>
             </div>
 
@@ -118,20 +119,7 @@
 
         </div>
       </div>
-  </section>
-
-  <section class="formulario-crearcuenta">
-    <h1>Crear una nueva cuenta</h1>
-    <form id="formulario-crear">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email"><br><br>
-      
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password"><br><br>
-      
-      <input type="submit"  value="Registrarse">
     </form>
-    <a href="login.html">¡Ya tengo una cuenta!</a>
   </section>
 </body>
 </html>
