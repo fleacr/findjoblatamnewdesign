@@ -7,9 +7,6 @@ A hub of resources(Artificial Intelligence, Graphic Design, Job Portals, Learnin
 ### Frontend:
 Tailwind CSS and Javascript.
 
-### Backend:
-NodeJs. v 20.9.0
+### Backend and Database:
+Firebase
 
-### Database:
-HeidySQL.(MySql)
-PlanetScale
