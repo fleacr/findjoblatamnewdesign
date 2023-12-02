@@ -23,7 +23,7 @@ export class ManageAccount {
     createUserWithEmailAndPassword(auth, email, password)
       .then((_) => {
         alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
-        window.location.href = "coming-soon";
+        window.location.href = "coming-soon.html";
         // Mostrar alerta de registro exitoso
       })
       .catch((error) => {
