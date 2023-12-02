@@ -23,7 +23,7 @@ export class ManageAccount {
     createUserWithEmailAndPassword(auth, email, password)
       .then((_) => {
         alert("Registro exitoso. Serás redirigido a la página de inicio de sesión.");
-        window.location.href = "latam-career-hub.html";
+        window.location.href = "coming-soon";
         // Mostrar alerta de registro exitoso
       })
       .catch((error) => {
