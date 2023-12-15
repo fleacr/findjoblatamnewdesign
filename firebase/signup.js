@@ -1,6 +1,6 @@
 import { ManageAccount } from './config.js';
 
-document.getElementById("create-account").addEventListener("submit", (event) => {
+document.getElementById("sign-up").addEventListener("submit", (event) => {
   event.preventDefault();
 
   const email = document.getElementById("email").value;
@@ -10,5 +10,3 @@ document.getElementById("create-account").addEventListener("submit", (event) => 
   account.register(email, password);
 
 });
-
-console.log('Formulario de Registro');
