@@ -28,8 +28,19 @@ export class ManageAccount {
       })
       .catch((error) => {
         console.error(error.message);
-            // Mostrar alerta de error de registro
-            alert("Error al registrar: " + error.message);
+        switch (String(error.message)){
+          case "Firebase: Error (auth/email-already-in-use).":
+            alert("Error al registrar: El correo ya está registrado");
+            break;
+          default:
+            alert("Error al registrarse: " + error.message)
+        
+        }
+/*         if(error.message == "Firebase: Error (auth/email-already-in-use)."){
+          alert("Error al registrar: El correo ya está registrado");
+        }else{
+          alert("Error al registrar: " + error.message);
+        } */
       });
   }
 
@@ -42,8 +53,28 @@ export class ManageAccount {
       })
       .catch((error) => {
         console.error(error.message);
-                // Mostrar alerta de error de inicio de sesión
-                alert("Error al iniciar sesión: " + error.message);
+        switch (String(error.message)) {
+          case "Firebase: Error (auth/invalid-login-credentials).":
+            alert("Error al iniciar sesión: Las credenciales no son correctas");
+            break;
+          case "Firebase: Error (auth/missing-password).":
+            alert("Error al iniciar sesión: El campo de contraseña está vacío");
+            break;
+          default:
+            alert("Error al iniciar sesión: " + error.message);  
+            break;
+        }
+
+/*         if(error.message == "Firebase: Error (auth/invalid-login-credentials)."){
+          alert("Error al iniciar sesión: Las credenciales no son correctas");
+        }
+        if(error.message == "Firebase: Error (auth/missing-password)."){
+          alert("Error al iniciar sesión: El campo de contraseña está vacío");     
+        }
+        else{
+          // Mostrar alerta de error de inicio de sesión
+          alert("Error al iniciar sesión: " + error.message);     
+        } */
       });
   }
 
