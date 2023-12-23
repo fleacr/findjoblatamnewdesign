@@ -41,35 +41,35 @@ export class ManageAccount {
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
-            },5200)
+            },2500)
             break;
           case "Firebase: Password should be at least 6 characters (auth/weak-password).":
             toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Su password debe tener más de 6 carácteres';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
-            },5200)
+            },2500)
             break;
             case "Firebase: Error (auth/missing-email).":
               toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>El campo de email está vacío';
               toastBox.appendChild(toast);
               setTimeout(()=>{
                 toast.remove();
-              },5200)
+              },2500)
               break;
           case "Firebase: Error (auth/missing-password).":
             toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>El campo de contraseña está vacío';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
-            },5200)
+            },2500)
             break;
             case "Firebase: Error (auth/invalid-email).":
               toast.innerHTML= '<img width="30" height="" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>Email inválido';
               toastBox.appendChild(toast);
               setTimeout(()=>{
                 toast.remove();
-              },5200)
+              },2500)
               break;
           default:
             toast.innerHTML= 'Ha ocurrido un error' + error.message;
