@@ -24,54 +24,62 @@ export class ManageAccount {
   register(email, password) {
     let toastBox = document.getElementById('toastBox');
     let toast = document.createElement('div');
-    toast.classList.add('toast');
     createUserWithEmailAndPassword(auth, email, password)
       .then((_) => {
-        toast.innerHTML= '<img width="50" height="50" src="https://img.icons8.com/ios-filled/50/instagram-check-mark.png" alt="instagram-check-mark"/>Registro exitoso';
+        toast.classList.add('toast-successfull');
+        toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email con los pasos a seguir.';
         toastBox.appendChild(toast);
-        window.location.href = "coming-soon.html";
+        setTimeout(()=>{
+          toast.remove();
+        },15000)
+        /* window.location.href = "coming-soon.html"; */
       })
       .catch((error) => {
         console.error(error.message);
         switch (String(error.message)){
           
           case "Firebase: Error (auth/email-already-in-use).":
-            toast.classList.add('email-already')
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Email ya en uso';
+            toast.classList.add('toast');
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Email ya en uso';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
             },2500)
             break;
           case "Firebase: Password should be at least 6 characters (auth/weak-password).":
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Su password debe tener más de 6 carácteres';
+            toast.classList.add('toast');
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Su password debe tener más de 6 carácteres';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
             },2500)
             break;
             case "Firebase: Error (auth/missing-email).":
-              toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>El campo de email está vacío';
+              toast.classList.add('toast');
+              toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> El campo de email está vacío';
               toastBox.appendChild(toast);
               setTimeout(()=>{
                 toast.remove();
               },2500)
               break;
           case "Firebase: Error (auth/missing-password).":
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>El campo de contraseña está vacío';
+            toast.classList.add('toast');
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> El campo de contraseña está vacío';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
             },2500)
             break;
             case "Firebase: Error (auth/invalid-email).":
-              toast.innerHTML= '<img width="30" height="" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/>Email inválido';
+              toast.classList.add('toast');
+              toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Email inválido';
               toastBox.appendChild(toast);
               setTimeout(()=>{
                 toast.remove();
               },2500)
               break;
           default:
+            toast.classList.add('toast');
             toast.innerHTML= 'Ha ocurrido un error' + error.message;
             toastBox.appendChild(toast);
 /*             alert("Error al registrarse: " + error.message); */
@@ -88,34 +96,33 @@ export class ManageAccount {
       .then((_) => {
         alert("Has iniciado sesión correctamente. Serás redirigido a la página principal.");
         window.location.href = "coming-soon.html";
-        // Mostrar alerta de inicio de sesión exitoso
       })
       .catch((error) => {
         console.error(error.message);
         switch (String(error.message)) {
           case "Firebase: Error (auth/invalid-login-credentials).":
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Error al iniciar sesión: Las credenciales no son correctas';
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Las credenciales no son correctas';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
             },2500)
             break;
           case "Firebase: Error (auth/missing-password).":
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> El campo de contraseña está vacío';
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> El campo de contraseña está vacío';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
             },2500)
             break;
           case "Firebase: Error (auth/invalid-email).":
-             toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Email inválido';
+             toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Email inválido';
              toastBox.appendChild(toast);
              setTimeout(()=>{
              toast.remove();
             },2500)
             break;
           case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
-            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Este correo ha sido bloqueado, pongase en contacto con nuestra cuenta de instagram @findjoblatam';
+            toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/cancel.png" alt="cancel"/> Este correo ha sido bloqueado, pongase en contacto con nuestra cuenta de instagram @findjoblatam';
             toastBox.appendChild(toast);
             setTimeout(()=>{
               toast.remove();
