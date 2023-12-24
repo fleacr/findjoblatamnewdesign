@@ -81,6 +81,9 @@ export class ManageAccount {
   }
 
   authenticate(email, password) {
+    let toastBox = document.getElementById('toastBox');
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
     signInWithEmailAndPassword(auth, email, password)
       .then((_) => {
         alert("Has iniciado sesión correctamente. Serás redirigido a la página principal.");
@@ -91,10 +94,32 @@ export class ManageAccount {
         console.error(error.message);
         switch (String(error.message)) {
           case "Firebase: Error (auth/invalid-login-credentials).":
-            alert("Error al iniciar sesión: Las credenciales no son correctas");
+            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Error al iniciar sesión: Las credenciales no son correctas';
+            toastBox.appendChild(toast);
+            setTimeout(()=>{
+              toast.remove();
+            },2500)
             break;
           case "Firebase: Error (auth/missing-password).":
-            alert("Error al iniciar sesión: El campo de contraseña está vacío");
+            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> El campo de contraseña está vacío';
+            toastBox.appendChild(toast);
+            setTimeout(()=>{
+              toast.remove();
+            },2500)
+            break;
+          case "Firebase: Error (auth/invalid-email).":
+             toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Email inválido';
+             toastBox.appendChild(toast);
+             setTimeout(()=>{
+             toast.remove();
+            },2500)
+            break;
+          case "Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).":
+            toast.innerHTML= '<img width="30" height="30" src="https://img.icons8.com/ios-filled/50/important-event.png" alt="important-event"/> Este correo ha sido bloqueado, pongase en contacto con nuestra cuenta de instagram @findjoblatam';
+            toastBox.appendChild(toast);
+            setTimeout(()=>{
+              toast.remove();
+            },2500)
             break;
           default:
             alert("Error al iniciar sesión: " + error.message);  
