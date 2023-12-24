@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -26,7 +26,8 @@ export class ManageAccount {
     let toast = document.createElement('div');
     createUserWithEmailAndPassword(auth, email, password)
       .then((_) => {
-        toast.classList.add('toast-successfull');
+        toast.classList.add('toast-successfull'); //Add a CSS class to the element created
+        sendEmailVerification(auth.currentUser); //Send the verification email.
         toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email con los pasos a seguir.';
         toastBox.appendChild(toast);
         setTimeout(()=>{
