@@ -384,14 +384,3 @@ graphicDesign.addEventListener('scroll', (e) => {
 
 
 /* Registration and signin interface*/
-
-/* let toastBox = document.getElementById('toastBox');
-
-function showNotificaction(){
-  let toastBox = document.getElementById('toastBox');
-  let toast = document.createElement('div');
-  toast.classList.add('toast');
-  toast.innerHTML= 'Funciona';
-  toastBox.appendChild(toast);
-}
- */

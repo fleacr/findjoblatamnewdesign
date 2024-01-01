@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+import { getFirestore, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,22 +19,43 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
+const db = getFirestore(app);
+
+
+
+  
+/*    submitData.addEventListener ('click', (e) =>{
+  // Add a new document in collection "users"
+  var email = document.getElementById('email').value;
+  let role = "normal";
+   addDoc(collection(db, "users"), {
+    email: email,
+    role: role,
+  });
+  })  */
+
+
 
 export class ManageAccount {
-  
-  register(email, password) {
+
+     register(email, password) {
     let toastBox = document.getElementById('toastBox');
     let toast = document.createElement('div');
     createUserWithEmailAndPassword(auth, email, password)
       .then((_) => {
         toast.classList.add('toast-successfull'); //Add a CSS class to the element created
         sendEmailVerification(auth.currentUser); //Send the verification email.
-        toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email con los pasos a seguir.';
+        toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email.';
         toastBox.appendChild(toast);
+        let role = "normal";
+        addDoc(collection(db, "users"), {
+         email: email,
+         role: role,
+       });
         setTimeout(()=>{
           toast.remove();
         },15000)
-        /* window.location.href = "coming-soon.html"; */
+         //window.location.href = "coming-soon.html";
       })
       .catch((error) => {
         console.error(error.message);
@@ -83,11 +105,10 @@ export class ManageAccount {
             toast.classList.add('toast');
             toast.innerHTML= 'Ha ocurrido un error' + error.message;
             toastBox.appendChild(toast);
-/*             alert("Error al registrarse: " + error.message); */
             break;
         }
       });
-  }
+  } 
 
   authenticate(email, password) {
     let toastBox = document.getElementById('toastBox');
@@ -133,17 +154,6 @@ export class ManageAccount {
             alert("Error al iniciar sesión: " + error.message);  
             break;
         }
-
-/*         if(error.message == "Firebase: Error (auth/invalid-login-credentials)."){
-          alert("Error al iniciar sesión: Las credenciales no son correctas");
-        }
-        if(error.message == "Firebase: Error (auth/missing-password)."){
-          alert("Error al iniciar sesión: El campo de contraseña está vacío");     
-        }
-        else{
-          // Mostrar alerta de error de inicio de sesión
-          alert("Error al iniciar sesión: " + error.message);     
-        } */
       });
   }
 
@@ -157,3 +167,4 @@ export class ManageAccount {
       });
   }
 }
+
