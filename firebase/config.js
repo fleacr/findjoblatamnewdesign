@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import { getFirestore, addDoc, getDocs, collection, query, where } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+import { getFirestore, addDoc, getDocs, collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -41,22 +41,26 @@ export class ManageAccount {
      register(email, password) {
     let toastBox = document.getElementById('toastBox');
     let toast = document.createElement('div');
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((_) => {
-        toast.classList.add('toast-successfull'); //Add a CSS class to the element created
-        sendEmailVerification(auth.currentUser); //Send the verification email.
-        toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email.';
-        toastBox.appendChild(toast);
-        let role = "normal";
-        addDoc(collection(db, "users"), {
-         email: email,
-         role: role,
-       });
-        setTimeout(()=>{
-          toast.remove();
-        },15000)
-         //window.location.href = "coming-soon.html";
-      })
+       createUserWithEmailAndPassword(auth, email, password)
+         .then((userCredential) => {
+           const user = userCredential.user;
+
+           toast.classList.add('toast-successfull'); //Add a CSS class to the element created
+           sendEmailVerification(user); //Send the verification email.
+           toast.innerHTML = '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email.';
+           toastBox.appendChild(toast);
+           let role = "normal";
+           addDoc(collection(db, "users"), {
+             email: email,
+             role: role,
+             uid: user.uid, // Agregar el UID del usuario
+           });
+
+           setTimeout(() => { //Sets a timer to close the pop-up
+             toast.remove();
+           }, 15000);
+         })
+      
       .catch((error) => {
         console.error(error.message);
         switch (String(error.message)){
