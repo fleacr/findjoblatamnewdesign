@@ -1,4 +1,5 @@
 import { ManageAccount } from './config.js';
+import { getFirestore, getDocs, collection, doc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 
 document.getElementById("login").addEventListener("submit", (event) => {
@@ -11,3 +12,4 @@ document.getElementById("login").addEventListener("submit", (event) => {
     account.authenticate(email, password);
   
   });
+

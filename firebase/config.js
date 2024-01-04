@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import { getFirestore, addDoc, getDocs, collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+import { getFirestore, addDoc, getDocs, collection, setDoc, doc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -35,6 +35,22 @@ const db = getFirestore(app);
   })  */
 
 
+/*   //Check data from Database
+
+const uid = "RAun7pY5loweIRTNZ0c7"
+  const docRef = doc(db, "users", email);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    if(docSnap.data().role == "admin"){
+      console.log("Es admin", docSnap.data().role);
+    }else{
+      console.log("No es admin");
+    }
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  } */
 
 export class ManageAccount {
 
@@ -113,15 +129,24 @@ export class ManageAccount {
         }
       });
   } 
-
+  
   authenticate(email, password) {
     let toastBox = document.getElementById('toastBox');
     let toast = document.createElement('div');
     toast.classList.add('toast');
     signInWithEmailAndPassword(auth, email, password)
       .then((_) => {
-        alert("Has iniciado sesión correctamente. Serás redirigido a la página principal.");
-        window.location.href = "coming-soon.html";
+        toast.classList.add('toast-successfull');
+        toast.innerHTML = '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Haz iniciado sesión correctamente';
+        toastBox.appendChild(toast);
+        const usersRef = collection(db, "users");
+        const user = auth.currentUser;
+        const userUid = auth.uid;
+        setTimeout(()=>{
+          toast.remove();
+        },2500)
+        /* alert("Has iniciado sesión correctamente. Serás redirigido a la página principal.");
+        window.location.href = "coming-soon.html"; */
       })
       .catch((error) => {
         console.error(error.message);
