@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import { getFirestore, addDoc, getDocs, collection, setDoc, doc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+import { getFirestore, addDoc, getDocs, collection, setDoc, doc, query, where, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -35,22 +35,32 @@ const db = getFirestore(app);
   })  */
 
 
-/*   //Check data from Database
+   //Check data from Database
 
-const uid = "RAun7pY5loweIRTNZ0c7"
-  const docRef = doc(db, "users", email);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    if(docSnap.data().role == "admin"){
-      console.log("Es admin", docSnap.data().role);
-    }else{
-      console.log("No es admin");
+/*   function checkSubscription(params) {
+    const uid = "RAun7pY5loweIRTNZ0c7"
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+  
+    if (docSnap.exists()) {
+      if(docSnap.data().role == "admin"){
+        console.log("Es admin");
+      }else{
+        console.log("No es admin");
+      }
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No existe documento con ese ID");
     }
-  } else {
-    // docSnap.data() will be undefined in this case
-    console.log("No such document!");
   } */
+
+
+function addCollection(email, role, userID) {
+  setDoc(doc(db, "users", userID), {
+    email: email,
+    role: role,
+  });
+}
 
 export class ManageAccount {
 
@@ -60,18 +70,12 @@ export class ManageAccount {
        createUserWithEmailAndPassword(auth, email, password)
          .then((userCredential) => {
            const user = userCredential.user;
-
            toast.classList.add('toast-successfull'); //Add a CSS class to the element created
            sendEmailVerification(user); //Send the verification email.
            toast.innerHTML = '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> Registro exitoso. Se envió un correo de verificación a su email.';
            toastBox.appendChild(toast);
            let role = "normal";
-           addDoc(collection(db, "users"), {
-             email: email,
-             role: role,
-             uid: user.uid, // Agregar el UID del usuario
-           });
-
+           addCollection(user.email, role, user.uid);
            setTimeout(() => { //Sets a timer to close the pop-up
              toast.remove();
            }, 15000);
