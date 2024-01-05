@@ -8,5 +8,5 @@ A hub of resources(Artificial Intelligence, Graphic Design, Job Portals, Learnin
 Tailwind CSS and Javascript.
 
 ### Backend and Database:
-Firebase
+Firebase (Firestore Database and Firebase Authentication)
 
