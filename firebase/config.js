@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import { getFirestore, addDoc, getDocs, collection, setDoc, doc, query, where, getDoc, runTransaction } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
-
+import { getAuth, sendPasswordResetEmail, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+import { getFirestore, addDoc, getDocs, collection, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -22,24 +21,10 @@ const auth = getAuth();
 const db = getFirestore(app);
 
 
+/*    //Check data from Database 
 
-  
-/*    submitData.addEventListener ('click', (e) =>{
-  // Add a new document in collection "users"
-  var email = document.getElementById('email').value;
-  let role = "normal";
-   addDoc(collection(db, "users"), {
-    email: email,
-    role: role,
-  });
-  })  */
-
-
-   //Check data from Database
-
-/*   function checkSubscription(params) {
-    const uid = "RAun7pY5loweIRTNZ0c7"
-    const docRef = doc(db, "users", uid);
+async function checkSubscription(userUid) {
+    const docRef = doc(db, "users", userUid);
     const docSnap = await getDoc(docRef);
   
     if (docSnap.exists()) {
@@ -146,6 +131,7 @@ export class ManageAccount {
         const usersRef = collection(db, "users");
         const user = auth.currentUser;
         const userUid = auth.uid;
+        checkSubscription(userUid);
         setTimeout(()=>{
           toast.remove();
         },2500)
@@ -190,6 +176,22 @@ export class ManageAccount {
       });
   }
 
+/*   passwordReset(email){
+    sendPasswordResetEmail(email)
+    .then(() => {
+      console.log("Email Sent");
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(error);
+      // ..
+    });
+  } */
+
+
   signOut() {
     signOut(auth)
       .then((_) => {
@@ -199,5 +201,6 @@ export class ManageAccount {
         console.error(error.message);
       });
   }
+
 }
 
