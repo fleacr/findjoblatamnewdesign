@@ -413,7 +413,7 @@ html{
 }
 
 
-/* Login form */
+/* Login form and pop-ups*/
 
 .toast-successfull {
     width: 400px;
@@ -440,4 +440,21 @@ html{
     background: orange;
     animation: anim 15s linear forwards;
     border-bottom-left-radius: 80px 80px;
+}
+
+
+
+@media not all and (min-width: 640px) {
+    .toast-successfull {
+        width: 250px!important;
+        height: 100px!important;
+    }
+}
+
+
+@media not all and (min-width: 640px) {
+    .toast {
+        width: 250px!important;
+        height: 100px!important;
+    }
 }

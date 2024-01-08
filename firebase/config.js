@@ -131,7 +131,7 @@ export class ManageAccount {
         const usersRef = collection(db, "users");
         const user = auth.currentUser;
         const userUid = auth.uid;
-        checkSubscription(userUid);
+/*         checkSubscription(userUid); */
         setTimeout(()=>{
           toast.remove();
         },2500)
@@ -142,6 +142,7 @@ export class ManageAccount {
         console.error(error.message);
         switch (String(error.message)) {
           case "Firebase: Error (auth/invalid-login-credentials).":
+            toast.classList.add('toast');
             toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Las credenciales no son correctas';
             toastBox.appendChild(toast);
             setTimeout(()=>{
@@ -176,21 +177,44 @@ export class ManageAccount {
       });
   }
 
-/*   passwordReset(email){
-    sendPasswordResetEmail(email)
+  passwordReset = (email) => {
+    let toastBox = document.getElementById('toastBox');
+    let toast = document.createElement('div');
+    toast.classList.add('toast');
+    sendPasswordResetEmail(auth, email)
     .then(() => {
-      console.log("Email Sent");
-      // Password reset email sent!
-      // ..
+      toast.classList.add('toast-successfull');
+      toast.innerHTML = '<img width="60" height="60" src="https://img.icons8.com/clouds/100/checked--v1.png" alt="checked--v1"/> El correo de reestablecimiento de contraseña ha sido enviado';
+      toastBox.appendChild(toast);
+      setTimeout(()=>{
+        toast.remove();
+      },2500)
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error);
-      // ..
-    });
-  } */
 
+      switch (String(error.message)) {
+        case "Firebase: Error (auth/invalid-email)":
+          toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> Email inválido';
+          toastBox.appendChild(toast);
+          setTimeout(()=>{
+            toast.remove();
+          },2500)
+          break;
+
+        case "Firebase: Error (auth/missing-email).":
+          toast.innerHTML= '<img width="60" height="60" src="https://img.icons8.com/plasticine/100/general-warning-sign.png" alt="general-warning-sign"/> El campo de correo está vacío';
+          toastBox.appendChild(toast);
+          setTimeout(()=>{
+            toast.remove();
+          },2500)
+        break;
+      
+        default:
+          break;
+      }
+        console.error(error.message);
+    });
+}
 
   signOut() {
     signOut(auth)
